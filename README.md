@@ -17,8 +17,10 @@ It is also a production-ready environment for running [ashr](https://github.com/
 Run `make` in the container to generate the simulation results, analysis, paper, and make them available in a folder accessible from the host:
 
         cd /home/user/
-        mkdir ash-docker-share
-        docker run -v /home/rstudio/:/home/user/ash-docker-share --name ash stephenslab/ash-paper-docker make
+        mkdir output
+        docker run -v /home/rstudio/output:/home/user/output --name ash stephenslab/ash-paper-docker make output
+        docker run -v /home/rstudio/output:/home/user/output --name ash stephenslab/ash-paper-docker make analysis && cp -r analysis/ output/analysis/
+        docker run -v /home/rstudio/output:/home/user/output --name ash stephenslab/ash-paper-docker make paper && cp -r paper/ output/paper/
 
 > Note 1: replace `user` with your system user name.
 
@@ -26,7 +28,7 @@ Run `make` in the container to generate the simulation results, analysis, paper,
 
 ## Reproduce the analysis interactively
 
-        docker run -d -p 8787:8787 --name ash stephenslab/ash-paper-docker
+        docker run -d -p 8787:8787 -v /home/rstudio/output:/home/user/output --name ash stephenslab/ash-paper-docker
 
 * Open [http://localhost:8787](http://localhost:8787), use `rstudio`/`rstudio`
 to log in to the RStudio Server. Compile and interact with the R Markdown
