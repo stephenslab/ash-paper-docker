@@ -28,7 +28,7 @@ Run `make` in the container to generate the simulation results, analysis, paper,
 
         docker run -d -p 8787:8787 --name ash stephenslab/ash-paper-docker
 
-* Go to [http://localhost:8787](http://localhost:8787), use `rstudio`/`rstudio`
+* Open [http://localhost:8787](http://localhost:8787), use `rstudio`/`rstudio`
 to log in to the RStudio Server. Compile and interact with the R Markdown
 documents in the `analysis/` directory.
 
