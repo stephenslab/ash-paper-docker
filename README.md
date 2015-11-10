@@ -14,7 +14,7 @@ It is also a production-ready environment for running [ashr](https://github.com/
 
 ## Reproduce the simulation studies, analysis, and paper
 
-Run `make` in the container to generate the simulation results, analysis, paper, and make them available in a folder accessible from the host:
+Run `make` in the container to generate the simulation results, analysis, paper, and make them available in a folder `output` accessible from the host:
 
         cd /home/user/
         mkdir output
