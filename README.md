@@ -10,25 +10,22 @@ It is also a production-ready environment for running [ashr](https://github.com/
 
 * Download the `ash-paper-docker` image and run a container named `ash`:
 
-        docker pull stephenslab/ash-paper-docker
+        docker pull stephenslab/ash-paper-docker:master
 
 ## Reproduce the simulation studies, analysis, and paper
 
-Run `make` in the container to generate the simulation results, analysis, paper, and make them available in a folder `output` accessible from the host:
+        cd $HOME && mkdir output
+        docker run -v $HOME/output:/home/rstudio/output --name ash stephenslab/ash-paper-docker:master make output
+        docker run -v $HOME/output:/home/rstudio/output --name ash stephenslab/ash-paper-docker:master make analysis && cp -r analysis/ output/analysis/
+        docker run -v $HOME/output:/home/rstudio/output --name ash stephenslab/ash-paper-docker:master make paper && cp -r paper/ output/paper/
 
-        cd /home/user/
-        mkdir output
-        docker run -v /home/rstudio/output:/home/user/output --name ash stephenslab/ash-paper-docker make output
-        docker run -v /home/rstudio/output:/home/user/output --name ash stephenslab/ash-paper-docker make analysis && cp -r analysis/ output/analysis/
-        docker run -v /home/rstudio/output:/home/user/output --name ash stephenslab/ash-paper-docker make paper && cp -r paper/ output/paper/
+In the host system, the output of the simulation studies will be accessible from the `~/output` directory, the analysis will be in `~/output/analysis`, the paper will be in `~/output/paper`.
 
-> Note 1: replace `user` with your system user name.
-
-> Note 2: running this will take several hours.
+> Note: the simulation studies computation may take more than 12 hours.
 
 ## Reproduce the analysis interactively
 
-        docker run -d -p 8787:8787 -v /home/rstudio/output:/home/user/output --name ash stephenslab/ash-paper-docker
+        docker run -d -p 8787:8787 -v $HOME/output:/home/rstudio/output --name ash stephenslab/ash-paper-docker
 
 * Open [http://localhost:8787](http://localhost:8787), use `rstudio`/`rstudio`
 to log in to the RStudio Server. Compile and interact with the R Markdown
@@ -43,4 +40,4 @@ documents in the `analysis/` directory.
 
 * To remove the `ash-paper-docker` image:
 
-        docker rmi stephenslab/ash-paper-docker
+        docker rmi stephenslab/ash-paper-docker:master

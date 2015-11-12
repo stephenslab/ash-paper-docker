@@ -30,12 +30,13 @@ RUN apt-get update \
   && mktexlsr \
   && updmap-sys
 
+# Clone the ash-packrat repo
 RUN git clone https://github.com/stephenslab/ash-packrat.git /home/rstudio/
 
 # Basic R package dependencies for installing packrat
 RUN Rscript -e "install.packages(c('RCurl', 'devtools'), repos = 'https://cran.rstudio.com')"
 
-# Install packrat with liftr
+# Install packrat v0.4.4 with liftr
 RUN Rscript -e "source('https://cdn.rawgit.com/road2stat/liftrlib/fab41764ea8b56677d05c70c86225774164b6ca0/install_cran.R');install_cran(c('packrat/0.4.4'))"
 
 # Install depended R packages with packrat
