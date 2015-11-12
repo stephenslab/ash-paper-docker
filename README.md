@@ -26,7 +26,7 @@ In the host system, the output of the simulation studies will be accessible from
 
 After the simulation is finished (the `~/output` directory contains the result):
 
-        docker run -d -p 8787:8787 -v $HOME/output:/home/rstudio/output --name ash stephenslab/ash-paper-docker
+        docker run -d -p 8787:8787 -v $HOME/output:/home/rstudio/output --name ash stephenslab/ash-paper-docker:master
 
 Open [http://localhost:8787](http://localhost:8787), use `rstudio`/`rstudio`
 to log in to the RStudio Server. Compile and interact with the R Markdown
