@@ -35,17 +35,37 @@ from the `~/output` directory, the analysis will be in `~/output/analysis`,
 the paper will be in `~/output/paper`.
 
 > Note: the simulation takes about 10 hours to finish on a MacBook Pro Late 2013 (i5 2.3 GHz).
+> The analysis and paper step only take minutes to finish.
 
 ## Reproduce the analysis interactively
 
-After the simulation is finished (the `~/output` directory now contains
-the ~6Gb output), run:
+After the simulation is finished (the `~/output` directory will
+contain a ~6GB output), run:
 
         docker run -d -p 8787:8787 -v $HOME/output:/home/rstudio/output --name ash4 stephenslab/ash-paper-docker:master
 
 Open [http://localhost:8787](http://localhost:8787), use `rstudio`/`rstudio`
 to log in to the RStudio Server. Compile and interact with the R Markdown
 documents in the `analysis/` directory.
+
+## For Mac and Windows Docker Users
+
+Since Mac and Windows currently uses a Linux VM with 2GB memory to run Docker
+by default, the analysis step may run out of memory.
+
+To adjust the VM memory size on Mac:
+
+        boot2docker stop
+        VBoxManage modifyvm boot2docker-vm --memory 6144
+        boot2docker start
+
+On Windows:
+
+        /c/Program\ Files/Oracle/VirtualBox/VBoxManage.exe modifyvm boot2docker-vm --memory 6144
+
+Or simply use the VirtualBox GUI to increase the memory size:
+open VirtualBox, select "boot2docker-vm", click "settings", select "system",
+adjust the memory size (~6GB will be sufficient).
 
 ## Clean Up
 
