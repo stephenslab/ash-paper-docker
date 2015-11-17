@@ -10,7 +10,7 @@ project.
 
 2. Pull the Docker image:
 
-        docker pull stephenslab/ash-paper-docker:master
+        docker pull stephenslab/ash-paper-docker:paper
 
 ## Reproduce the simulation studies, analysis, and paper
 
@@ -20,15 +20,15 @@ project.
 
 2. Run simulation:
 
-        docker run -v $HOME/output:/home/rstudio/output --name ash1 stephenslab/ash-paper-docker:master make output
+        docker run -v $HOME/output:/home/rstudio/output --name ash1 stephenslab/ash-paper-docker:paper make output
 
 3. Run analysis:
 
-        docker run -v $HOME/output:/home/rstudio/output --name ash2 stephenslab/ash-paper-docker:master make analysis && cp -r analysis/ output/analysis/
+        docker run -v $HOME/output:/home/rstudio/output --name ash2 stephenslab/ash-paper-docker:paper make analysis && cp -r analysis/ output/analysis/
 
 4. Compile paper:
 
-        docker run -v $HOME/output:/home/rstudio/output --name ash3 stephenslab/ash-paper-docker:master make paper && cp -r paper/ output/paper/
+        docker run -v $HOME/output:/home/rstudio/output --name ash3 stephenslab/ash-paper-docker:paper make paper && cp -r paper/ output/paper/
 
 In the host system, the output of the simulation studies will be accessible
 from the `~/output` directory, the analysis will be in `~/output/analysis`,
@@ -42,7 +42,7 @@ the paper will be in `~/output/paper`.
 After the simulation is finished (the `~/output` directory will
 contain a ~6GB output), run:
 
-        docker run -d -p 8787:8787 -v $HOME/output:/home/rstudio/output --name ash4 stephenslab/ash-paper-docker:master
+        docker run -d -p 8787:8787 -v $HOME/output:/home/rstudio/output --name ash4 stephenslab/ash-paper-docker:paper
 
 Open [http://localhost:8787](http://localhost:8787), use `rstudio`/`rstudio`
 to log in to the RStudio Server. Compile and interact with the R Markdown
@@ -76,6 +76,6 @@ adjust the memory size (~6GB will be sufficient).
 
 2. Remove the Docker image:
 
-        docker rmi stephenslab/ash-paper-docker:master
+        docker rmi stephenslab/ash-paper-docker:paper
 
 3. Remove the `~/output` directory.
