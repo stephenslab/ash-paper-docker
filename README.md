@@ -35,7 +35,7 @@ from the `~/output` directory, the analysis will be in `~/output/analysis`,
 the paper will be in `~/output/paper`.
 
 > Note: the simulation takes about 10 hours to finish on a MacBook Pro Late 2013 (i5 2.3 GHz).
-> The analysis and paper step only take minutes to finish.
+> Running analysis and compiling paper only take minutes to finish.
 
 ## Reproduce the analysis interactively
 
