@@ -34,7 +34,7 @@ In the host system, the output of the simulation studies will be accessible
 from the `~/output` directory, the analysis will be in `~/output/analysis`,
 the paper will be in `~/output/paper`.
 
-> Note: the simulation takes about 10 hours to finish on a MacBook Pro Late 2013 (i5 2.3 GHz).
+> Note: the simulation takes about **10** hours to finish on a MacBook Pro Late 2013 (i5 2.3 GHz).
 > Running analysis and compiling paper only take minutes to finish.
 
 ## Reproduce the analysis interactively
@@ -50,7 +50,7 @@ documents in the `analysis/` directory.
 
 ## For Mac and Windows Docker Users
 
-Since Mac and Windows currently uses a Linux VM with 2GB memory to run Docker
+Since Mac and Windows currently use a Linux VM with 2GB memory to run Docker
 by default, the analysis step may run out of memory.
 
 To adjust the VM memory size on Mac:
