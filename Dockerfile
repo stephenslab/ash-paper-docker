@@ -33,8 +33,8 @@ RUN apt-get update \
 # Install packrat v0.4.4
 RUN Rscript -e "install.packages('http://cran.rstudio.com/src/contrib/Archive/packrat/packrat_0.4.4.tar.gz')"
 
-# Clone the ash-packrat repo with accurate branch and commit
-RUN git clone -b master --single-branch https://github.com/stephenslab/ash-packrat.git /home/rstudio/ && cd /home/rstudio/ && git reset --hard 3b626d0dd3a0a8bef7f9f0f642915eb98a13dd5c
+# Clone the stephenslab/ash repo with accurate branch and commit
+RUN git clone -b master --single-branch https://github.com/stephenslab/ash.git /home/rstudio/ && cd /home/rstudio/ && git reset --hard eb2dc55af17e5b79a804e204753795396b3fa4fe
 
 # Install depended R packages with packrat
 RUN Rscript -e "packrat::init('/home/rstudio/')"
